@@ -63,24 +63,29 @@ function calcularAreaTriangulo() {
 // Código del triángulo Isosceles
 function isIsosceles(lado1, lado2, base) {
   return (lado1 == lado2 && lado1 != base); 
-} 
+}
+
+function calcAlturaIsosceles(lado, base) {
+ return Math.sqrt( 
+    (lado * lado) - ( (base * base) / 4)
+    );
+}
+
 // console.log(isIsosceles(15, 10, 15));
 function calcularAlturaTriangulo() {
   const inputLado1 = document.getElementById("inputLado1Isosceles");
   const inputLado2 = document.getElementById("inputLado2Isosceles");
   const inputBase = document.getElementById("inputBaseIsosceles");
   
-  const Lado1 =  Number( inputLado1.value );
-  const Lado2 = Number( inputLado2.value );
-  const Base = Number( inputBase.value );
-  const Isosceles = isIsosceles(Lado1, Lado2 , Base);
+  const lado1 =  Number( inputLado1.value );
+  const lado2 = Number( inputLado2.value );
+  const base = Number( inputBase.value );
+  const isosceles = isIsosceles(lado1, lado2 , base);
 
-  if ( !Isosceles ) {
+  if ( !isosceles ) {
     ( alert("No es un triangulo Isosceles") );
   } else {
-    let altura = Math.sqrt( 
-      (Lado1 * Lado1) - ( (Base * Base) / 4)
-      );
+    let altura = calcAlturaIsosceles(lado1, base);
 
       altura = altura.toFixed(2);
 
